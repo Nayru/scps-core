@@ -1,0 +1,30 @@
+seti 0 1 # Inkrement
+seti 1 10 # Abbruchbedingung
+seti 2 0 # Laufvariable
+cmp 3 1 2 # Abbruchbedinung prüfen
+jz 8 3 # Bei Abbruch aus der Schleife springen
+seti 4:*2 0 # Wert im Array setzen
+add 2 2 0 # Inkrement anwenden
+j 3 # Sprung zum Schleifenrumpf
+size 5 4
+sets 6 "Die Größe des Arrays ist "
+outs 6
+outi 5
+sets 7 ": "
+sets 8 "\n"
+outs 8
+seti 2 0
+cmp 3 1 2
+jz 24 3
+outi 2
+outs 7
+outi 4:*2
+outs 8
+add 2 2 0
+j 16
+outs 8
+copy 9 4
+seti 9:5 1
+outi 9:5
+outs 8
+outi 4:5

@@ -1,0 +1,50 @@
+seti 0 1        # 00 Constants
+seti 1 2        # 01
+seti 2 0        # 02 Also used as false
+j 29            # 03 Jump to main programm
+pop 3           # 04 Function IsGenerator(g,p,k), Argument k
+pop 4           # 05 Argument p
+pop 5           # 06 Argument g
+sub 6 4 0       # 07 p-1
+divexact 7 6 1  # 08 (p-1)/2
+powm 8 5 7 4    # 09 g^((p-1)/2)%p
+jne 14 8 0      # 10 
+pop 9           # 11 retrieve return address
+push 2          # 12 return false
+ja 9            # 13 
+divexact 7 6 3  # 14 (p-1)/k
+powm 8 5 7 4    # 15 g^((p-1)/k)%p
+jne 20 8 0      # 16
+pop 9           # 17
+push 2          # 18
+ja 9            # 19
+mul 6 1 3       # 20 2*k
+powm 7 5 6 4    # 21 g^(2*k)%p
+jne 26 7 0      # 22
+pop 9           # 23
+push 2          # 24
+ja 9            # 25
+pop 9           # 26
+push 0          # 27 return true
+ja 9            # 28 End function IsGenerator(g,p,k)
+poppi 10 "Bitte geben Sie das Sicherheitslevel an: " # 29
+pow 11 1 10     # 30 2^SecurityLevel
+random 12 11    # 31 r = random(2^SecurityLevel)
+nextprime 13 12 # 32 q = next_prime(r)
+seti 14 0       # 33 k = 0
+nextprime 14 14 # 34 k = next_prime(k)
+mul 15 1 14     # 35 2*k
+mul 15 15 13    # 36 2*k*q
+add 15 15 0     # 37 p = 2*k*q+1
+probprime 16 15 # 38 prob_prime(p)
+jz 34 16        # 39 aggain while(!prop_prime(p))
+random 17 15    # 40 g = random(p)
+pushi 46	# 41 IsGenerator(g,p,k)
+push 17         # 42 
+push 15         # 43
+push 14         # 44
+j 4             # 45
+pop 18          # 46 return value
+jz 40 18        # 47 aggain while(!IsGenerator(g,p,k))
+pushpi 15 "Die Primzahl lautet: " # 48 return p
+pushpi 17 "Der Generator ist: "   # 49 return g

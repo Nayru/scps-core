@@ -1,0 +1,5 @@
+# Ein einfaches Programm zum Ausgeben der Summe von 1 und 2
+seti 0 1
+seti 1 2
+add 2 0 1
+outi 2

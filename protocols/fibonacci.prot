@@ -1,0 +1,16 @@
+seti 0 0
+seti 1 1
+seti 2 2
+poppi 3 "n="
+je 13 3 0 
+je 15 3 1
+sub 4 3 1
+sub 5 3 2
+fibonacci 6 4
+fibonacci 7 5
+add 8 6 7
+pushpi 8 "fib(n)="
+exit
+pushpi 0 "fib(n)="
+exit
+pushpi 1 "fib(n)="

@@ -1,0 +1,10 @@
+seti 0 10 # Argument Sicherheits-Level
+generatePrimeAndGenerator 1 2 0
+sets 3 "p: "
+sets 4 "\n"
+sets 5 "g: "
+outs 3
+outi 1
+outs 4
+outs 5
+outi 2

@@ -1,0 +1,16 @@
+sets 0 "\n"                             # 00
+seti 1 2                                # 01
+seti 2 0                                # 02
+sets 3 "Diese Zahl ist gerade."         # 03
+sets 4 "Diese Zahl ist ungerade."       # 04
+seti 5 100                              # 05 Zweiter Parameter (n) für RANDOM
+random 6 5                              # 06 r = random(); 0 <= r <= n-1 diskret gleichverteilt
+outi 6                                  # 07 print(r);
+outs 0                                  # 08 print("\n");
+mod 7 6 1                               # 09 r%2
+cmp 8 7 2                               # 10 r%2==0
+jz 14 8                                 # 11
+outs 4                                  # 12 print("Diese Zahl ist ungerade.");
+j 15                                    # 13
+outs 3                                  # 14 print("Diese Zahl ist gerade.");
+exit                                    # 15
